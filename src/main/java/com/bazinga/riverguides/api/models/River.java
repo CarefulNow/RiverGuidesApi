@@ -1,6 +1,6 @@
 package com.bazinga.riverguides.api.models;
 
-import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -10,7 +10,10 @@ import javax.validation.constraints.Size;
  * Created by bazinga on 7/6/17.
  */
 
-@JsonRootName(value = "river")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonTypeName("river")
+@JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class River {
     @NotNull
     @Size(max = 255, min = 1)
@@ -41,9 +44,9 @@ public class River {
     @NotNull
     @Size(max = 255, min = 1)
     private String author;
-    @NotNull
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String createdDate;
-    @NotNull
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String lastUpdatedDate;
     @NotNull
     @Size(max = 255, min = 1)

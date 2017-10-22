@@ -2,8 +2,11 @@ package com.bazinga.riverguides.api.dao.impl;
 
 import com.bazinga.riverguides.api.dao.AllRiversDAO;
 import com.bazinga.riverguides.api.dao.rowmapper.RiverRowMapper;
+import com.bazinga.riverguides.api.exception.ApplicationException;
+import com.bazinga.riverguides.api.exception.errors.RiverGuidesError;
 import com.bazinga.riverguides.api.models.River;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -20,9 +23,14 @@ public class AllRiversDAOImpl implements AllRiversDAO {
 
     @Override
     public List<River> getAllRivers() {
+        List<River> result;
         String sql = "SELECT * FROM rivers";
 
-        List<River> result = namedParameterJdbcTemplate.query(sql, new RiverRowMapper());
+        try {
+            result = namedParameterJdbcTemplate.query(sql, new RiverRowMapper());
+        } catch (DataAccessException e) {
+            throw new ApplicationException(RiverGuidesError.RIVER_GUIDES_INTERNAL_SERVER_ERROR);
+        }
         return result;
     }
 }

@@ -6,7 +6,8 @@ import org.springframework.http.HttpStatus;
  * Created by bazinga on 7/9/17.
  */
 public enum RiverGuidesError {
-    RIVER_GUIDES_INTERNAL_SERVER_ERROR("1001", "Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+    RIVER_GUIDES_INTERNAL_SERVER_ERROR("1001", "Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR),
+    RIVER_GUIDES_INVALID_REQUEST_FIELDS("1", "Invalid Request Fields", HttpStatus.BAD_REQUEST);
 
     private String code;
     private String message;

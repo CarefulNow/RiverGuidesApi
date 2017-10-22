@@ -15,7 +15,7 @@ import java.sql.SQLException;
 /**
  * Created by bazinga on 7/8/17.
  */
-public class RiverRowMapper implements RowMapper {
+public class RiverRowMapper implements RowMapper<River> {
     DateTimeFormatter dtf = DateTimeFormat.forPattern(RiverGuidesConstants.DATE_TIME_FORMAT_PATTERN);
     @Override
     public River mapRow(ResultSet resultSet, int i) throws ApplicationException {

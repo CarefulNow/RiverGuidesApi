@@ -1,7 +1,5 @@
 package com.bazinga.riverguides.api.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 /**
@@ -9,8 +7,8 @@ import java.util.List;
  */
 
 public class RiverList {
-    @JsonProperty("riverList")
-    List<River> rivers;
+
+    private List<River> rivers;
 
     public RiverList() {
     }
