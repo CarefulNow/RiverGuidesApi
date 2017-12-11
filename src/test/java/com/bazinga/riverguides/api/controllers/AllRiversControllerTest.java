@@ -65,7 +65,6 @@ public class AllRiversControllerTest {
                 .andDo(print())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.rivers").isArray())
-                .andExpect(jsonPath("$.rivers.river[0].riverName").value("test river"))
                 .andExpect(content().json("{\"rivers\":[{\"river\":{\"riverName\":\"test river\"," +
                                 "\"sectionName\":\"section 1\",\"region\":\"Stockholm\",\"country\":\"Sweden\"," +
                                 "\"grade\":\"4(4+)\",\"length\":\"6km\",\"funRating\":\"0\"," +
