@@ -1,4 +1,6 @@
 # RiverGuidesApi
+[![Coverage Status](https://coveralls.io/repos/github/CarefulNow/RiverGuidesApi/badge.svg)](https://coveralls.io/github/CarefulNow/RiverGuidesApi)
+[![Build Status](https://travis-ci.org/CarefulNow/RiverGuidesApi.svg?branch=master)](https://travis-ci.org/CarefulNow/RiverGuidesApi)
 This is an application to serve up river guides that for kayakers. This can currently will just give back all the rivers but more to follow.
 
 There will be a separate frontend application to consume this resource.
