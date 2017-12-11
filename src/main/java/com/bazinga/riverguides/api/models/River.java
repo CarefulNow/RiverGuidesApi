@@ -1,14 +1,14 @@
 package com.bazinga.riverguides.api.models;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-/**
- * Created by bazinga on 7/6/17.
- */
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonTypeName("river")

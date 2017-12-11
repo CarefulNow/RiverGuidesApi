@@ -2,27 +2,29 @@ package com.bazinga.riverguides.api.controllers;
 
 import com.bazinga.riverguides.api.exception.RequestException;
 import com.bazinga.riverguides.api.exception.errors.RiverGuidesError;
+import com.bazinga.riverguides.api.models.ManagementResponse;
 import com.bazinga.riverguides.api.models.River;
+import com.bazinga.riverguides.api.service.impl.AddRiverServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/rivers")
+@RequestMapping("/management")
 public class AddRiverController {
+    @Autowired
+    private AddRiverServiceImpl addRiverService;
 
-
-    @RequestMapping("/add")
+    @RequestMapping(value = "/add", method = {RequestMethod.GET, RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public String addRiver(@Valid @RequestBody River newRiver, BindingResult bindingResult) {
+    public ManagementResponse addRiver(@Valid @RequestBody River newRiver, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             throw new RequestException(bindingResult, RiverGuidesError.RIVER_GUIDES_INVALID_REQUEST_FIELDS);
         }
-
-        return "Success";
+        ManagementResponse response = addRiverService.addRiver(newRiver);
+        return response;
     }
 }

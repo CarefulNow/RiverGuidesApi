@@ -20,6 +20,7 @@ import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @RunWith(SpringRunner.class)
 public class AllRiversControllerTest {
@@ -63,6 +64,8 @@ public class AllRiversControllerTest {
         mockMvc.perform(get("/rivers/getall"))
                 .andDo(print())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.rivers").isArray())
+                .andExpect(jsonPath("$.rivers.river[0].riverName").value("test river"))
                 .andExpect(content().json("{\"rivers\":[{\"river\":{\"riverName\":\"test river\"," +
                                 "\"sectionName\":\"section 1\",\"region\":\"Stockholm\",\"country\":\"Sweden\"," +
                                 "\"grade\":\"4(4+)\",\"length\":\"6km\",\"funRating\":\"0\"," +

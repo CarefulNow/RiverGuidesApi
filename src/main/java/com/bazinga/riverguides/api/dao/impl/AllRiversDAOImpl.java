@@ -25,7 +25,6 @@ public class AllRiversDAOImpl implements AllRiversDAO {
     public List<River> getAllRivers() {
         List<River> result;
         String sql = "SELECT * FROM rivers";
-
         try {
             result = namedParameterJdbcTemplate.query(sql, new RiverRowMapper());
         } catch (DataAccessException e) {

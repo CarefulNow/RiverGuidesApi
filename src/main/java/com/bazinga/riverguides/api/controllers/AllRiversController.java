@@ -18,7 +18,7 @@ public class AllRiversController {
     @Autowired
     AllRiversServiceImpl allRiversService;
 
-    @RequestMapping(value = "/getall", method = {RequestMethod.GET, RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/getall", method = {RequestMethod.GET}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public RiverList getAllRivers() {
         RiverList riverList = allRiversService.getAllRivers();

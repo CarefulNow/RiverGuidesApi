@@ -1,10 +1,7 @@
 package com.bazinga.riverguides.api.models;
 
+import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by bazinga on 7/6/17.
- */
 
 public class RiverList {
 
