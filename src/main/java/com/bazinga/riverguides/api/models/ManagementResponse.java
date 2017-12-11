@@ -13,10 +13,6 @@ public class ManagementResponse {
     public ManagementResponse() {
     }
 
-    public ManagementResponse(String message) {
-        this.message = message;
-    }
-
     public String getMessage() {
         return message;
     }

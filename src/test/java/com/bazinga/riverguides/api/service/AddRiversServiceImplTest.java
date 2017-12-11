@@ -23,7 +23,7 @@ public class AddRiversServiceImplTest {
     private RiverDaoImpl riverDao;
 
     @Test
-    public void testAddRiverAlreadyExists() throws Exception {
+    public void testAddRiverAlreadyExists() {
         when(riverDao.checkRiverExists(any(String.class), any(String.class))).thenReturn(true);
 
         River testRiver = new River();
@@ -33,5 +33,18 @@ public class AddRiversServiceImplTest {
         ManagementResponse result = addRiverService.addRiver(testRiver);
 
         assertEquals("Response should say the river already exists", "River Already Exists", result.getMessage());
+    }
+
+    @Test
+    public void testAddRiverDoesNotExist() {
+        when(riverDao.checkRiverExists(any(String.class), any(String.class))).thenReturn(false);
+
+        River testRiver = new River();
+        testRiver.setRiverName("Dargle");
+        testRiver.setSectionName("Main Section");
+
+        ManagementResponse result = addRiverService.addRiver(testRiver);
+
+        assertEquals("Response should say the river does not exist", "River Does Not Exist", result.getMessage());
     }
 }

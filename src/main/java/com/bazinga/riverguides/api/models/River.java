@@ -55,23 +55,6 @@ public class River {
     public River() {
     }
 
-    public River(String riverName, String sectionName, String region, String country, String grade, String length, String funRating, double startGeoCoords, double endGeoCoords, String description, String author, String createdDate, String lastUpdatedDate, String lastEditor) {
-        this.riverName = riverName;
-        this.sectionName = sectionName;
-        this.region = region;
-        this.country = country;
-        this.grade = grade;
-        this.length = length;
-        this.funRating = funRating;
-        this.startGeoCoords = startGeoCoords;
-        this.endGeoCoords = endGeoCoords;
-        this.description = description;
-        this.author = author;
-        this.createdDate = createdDate;
-        this.lastUpdatedDate = lastUpdatedDate;
-        this.lastEditor = lastEditor;
-    }
-
     public String getRiverName() {
         return riverName;
     }
