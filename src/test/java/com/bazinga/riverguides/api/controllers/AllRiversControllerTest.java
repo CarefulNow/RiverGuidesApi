@@ -17,10 +17,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 public class AllRiversControllerTest {
@@ -38,7 +40,7 @@ public class AllRiversControllerTest {
     }
 
     @Test
-    public void sampleTest() throws Exception {
+    public void testGetAllRiversControllerSuccessfulResponse() throws Exception {
         RiverList riverList = new RiverList();
         River river1 = new River();
         river1.setAuthor("Star Lord");
@@ -64,14 +66,11 @@ public class AllRiversControllerTest {
         mockMvc.perform(get("/rivers/getall"))
                 .andDo(print())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("$.rivers").isArray())
-                .andExpect(content().json("{\"rivers\":[{\"river\":{\"riverName\":\"test river\"," +
-                                "\"sectionName\":\"section 1\",\"region\":\"Stockholm\",\"country\":\"Sweden\"," +
-                                "\"grade\":\"4(4+)\",\"length\":\"6km\",\"funRating\":\"0\"," +
-                                "\"startGeoCoords\":112.256365,\"endGeoCoords\":6.3121657," +
-                                "\"description\":\"test description\",\"author\":\"Star Lord\"," +
-                                "\"createdDate\":\"10/17/2017\",\"lastUpdatedDate\":\"11/17/2017\",\"" +
-                                "lastEditor\":\"Baby star lord\"}}]}"
-                , true));
+                .andExpect(jsonPath("$.rivers[0].river.riverName", is("test river")))
+                .andExpect(jsonPath("$.rivers[0].river.funRating", is("0")))
+                .andExpect(jsonPath("$.rivers[0].river.startGeoCoords", is(112.256365)))
+                .andExpect(jsonPath("$.rivers[0].river.endGeoCoords", is(006.3121657)));
     }
 }
