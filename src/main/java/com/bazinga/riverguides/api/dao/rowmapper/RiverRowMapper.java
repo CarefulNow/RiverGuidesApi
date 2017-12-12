@@ -13,7 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RiverRowMapper implements RowMapper<River> {
-    DateTimeFormatter dtf = DateTimeFormat.forPattern(RiverGuidesConstants.DATE_TIME_FORMAT_PATTERN);
+    private DateTimeFormatter dtf = DateTimeFormat.forPattern(RiverGuidesConstants.DATE_TIME_FORMAT_PATTERN);
+
     @Override
     public River mapRow(ResultSet resultSet, int i) throws ApplicationException {
         try {

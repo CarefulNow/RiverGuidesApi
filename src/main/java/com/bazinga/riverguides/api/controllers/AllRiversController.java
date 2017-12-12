@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/rivers")
 public class AllRiversController {
     @Autowired
-    AllRiversServiceImpl allRiversService;
+    private AllRiversServiceImpl allRiversService;
 
     @RequestMapping(value = "/getall", method = {RequestMethod.GET}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody

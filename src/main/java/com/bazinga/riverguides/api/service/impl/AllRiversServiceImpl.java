@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class AllRiversServiceImpl implements AllRiversService {
     @Autowired
-    AllRiversDAOImpl allRiversDAO;
+    private AllRiversDAOImpl allRiversDAO;
 
     @Override
     public RiverList getAllRivers() {

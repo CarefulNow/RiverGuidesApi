@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AddRiverServiceImpl implements AddRiverService {
     @Autowired
-    RiverDaoImpl riverDao;
+    private RiverDaoImpl riverDao;
 
     @Override
     public ManagementResponse addRiver(River river) {
