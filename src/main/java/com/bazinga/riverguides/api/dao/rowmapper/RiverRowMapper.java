@@ -12,9 +12,6 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by bazinga on 7/8/17.
- */
 public class RiverRowMapper implements RowMapper<River> {
     DateTimeFormatter dtf = DateTimeFormat.forPattern(RiverGuidesConstants.DATE_TIME_FORMAT_PATTERN);
     @Override
@@ -26,7 +23,7 @@ public class RiverRowMapper implements RowMapper<River> {
             river.setRegion(resultSet.getString("region"));
             river.setCountry(resultSet.getString("country"));
             river.setGrade(resultSet.getString("grade"));
-            river.setLength(resultSet.getString("fun_rating"));
+            river.setFunRating(resultSet.getString("fun_rating"));
             river.setStartGeoCoords(resultSet.getDouble("start_geo_coords"));
             river.setEndGeoCoords(resultSet.getDouble("end_geo_coords"));
             river.setDescription(resultSet.getString("description"));

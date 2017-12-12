@@ -10,6 +10,6 @@ There will be a separate frontend application to consume this resource.
 ### Refined Selection of Rivers
 Allow the user to refine the rivers that are returned with different parameters in the request.
 
-### Secrity for Adding rivers
+### Secure endpoints for Adding rivers
 Create and secure endpoints that allow users to add and update rivers in the database.
 

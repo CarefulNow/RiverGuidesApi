@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -33,6 +34,7 @@ public class River {
     @Size(max = 25, min = 1)
     private String length;
     @Size(max = 25, min = 1)
+    @Pattern(regexp = "[0-9]*")
     private String funRating;
     @Digits(integer = 10, fraction = 7)
     private double startGeoCoords;

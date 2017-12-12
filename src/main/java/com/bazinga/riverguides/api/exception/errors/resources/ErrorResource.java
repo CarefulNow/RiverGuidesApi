@@ -2,9 +2,6 @@ package com.bazinga.riverguides.api.exception.errors.resources;
 
 import java.util.List;
 
-/**
- * Created by bazinga on 7/9/17.
- */
 public class ErrorResource {
     private String code;
     private String message;

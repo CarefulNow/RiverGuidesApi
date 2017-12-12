@@ -15,10 +15,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by bazinga on 7/9/17.
- */
-
 @ControllerAdvice
 public class RequestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({RequestException.class})

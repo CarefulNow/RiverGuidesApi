@@ -1,8 +1,5 @@
 package com.bazinga.riverguides.api.exception.errors.resources;
 
-/**
- * Created by bazinga on 7/9/17.
- */
 public class FieldErrorResource {
     private String resource;
     private String field;

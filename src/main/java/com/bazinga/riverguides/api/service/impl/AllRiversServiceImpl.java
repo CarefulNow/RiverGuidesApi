@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by bazinga on 7/8/17.
- */
 @Service
 public class AllRiversServiceImpl implements AllRiversService {
     @Autowired

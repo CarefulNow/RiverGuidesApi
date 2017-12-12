@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RiverDaoImpl implements RiverDao {
     @Autowired
-    NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
     public boolean checkRiverExists(String riverName, String sectionName) {
