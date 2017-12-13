@@ -25,8 +25,11 @@ public class RiverRowMapper implements RowMapper<River> {
             river.setCountry(resultSet.getString("country"));
             river.setGrade(resultSet.getString("grade"));
             river.setFunRating(resultSet.getString("fun_rating"));
-            river.setStartGeoCoords(resultSet.getDouble("start_geo_coords"));
-            river.setEndGeoCoords(resultSet.getDouble("end_geo_coords"));
+            river.setLength(resultSet.getString("length"));
+            river.setStartGeoCoordsNorthings(resultSet.getDouble("start_coords_northings"));
+            river.setStartGeoCoordsEastings(resultSet.getDouble("start_coords_eastings"));
+            river.setEndGeoCoordsNorthings(resultSet.getDouble("end_coords_northings"));
+            river.setEndGeoCoordsEastings(resultSet.getDouble("end_coords_eastings"));
             river.setDescription(resultSet.getString("description"));
             river.setAuthor(resultSet.getString("author"));
             river.setCreatedDate(new DateTime(resultSet.getDate("created_date")).toString(dtf));

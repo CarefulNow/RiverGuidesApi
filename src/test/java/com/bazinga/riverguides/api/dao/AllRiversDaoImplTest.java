@@ -2,7 +2,7 @@ package com.bazinga.riverguides.api.dao;
 
 import com.bazinga.riverguides.api.dao.impl.AllRiversDAOImpl;
 import com.bazinga.riverguides.api.models.River;
-import com.bazinga.riverguides.api.test.RiversTable;
+import com.bazinga.riverguides.api.test.builders.RiversTable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,7 @@ public class AllRiversDaoImplTest {
         assertEquals("There should only be 1 river in the list", 1, riverList.size());
         assertEquals("The River Name should be Dargle", "Dargle", river.getRiverName());
         assertEquals("The Fun Rating should be 10", "10", river.getFunRating());
-        assertEquals("The Start Geo Coords should be 112.256365", (Double)112.256365, (Double)river.getStartGeoCoords());
+        assertEquals("The Start Geo Coords should be 112.256365", (Double)112.256365, (Double)river.getStartGeoCoordsNorthings());
         assertEquals("The created date should be 2015-10-21 00:00:00", "2015-10-21 00:00:00", river.getCreatedDate());
     }
 }

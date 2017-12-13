@@ -35,7 +35,7 @@ public class AllRiversControllerTest {
     private AllRiversServiceImpl allRiversService;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(allRiversController).build();
     }
 
@@ -47,7 +47,7 @@ public class AllRiversControllerTest {
         river1.setCountry("Sweden");
         river1.setCreatedDate("10/17/2017");
         river1.setDescription("test description");
-        river1.setEndGeoCoords(006.3121657);
+        river1.setEndGeoCoordsEastings(006.3121657);
         river1.setGrade("4(4+)");
         river1.setLastEditor("Baby star lord");
         river1.setLastUpdatedDate("11/17/2017");
@@ -56,7 +56,7 @@ public class AllRiversControllerTest {
         river1.setRiverName("test river");
         river1.setFunRating("0");
         river1.setSectionName("section 1");
-        river1.setStartGeoCoords(112.256365);
+        river1.setStartGeoCoordsNorthings(112.256365);
         List<River> list = new ArrayList<>();
         list.add(river1);
         riverList.setRivers(list);
@@ -70,7 +70,7 @@ public class AllRiversControllerTest {
                 .andExpect(jsonPath("$.rivers").isArray())
                 .andExpect(jsonPath("$.rivers[0].river.riverName", is("test river")))
                 .andExpect(jsonPath("$.rivers[0].river.funRating", is("0")))
-                .andExpect(jsonPath("$.rivers[0].river.startGeoCoords", is(112.256365)))
-                .andExpect(jsonPath("$.rivers[0].river.endGeoCoords", is(006.3121657)));
+                .andExpect(jsonPath("$.rivers[0].river.startGeoCoordsNorthings", is(112.256365)))
+                .andExpect(jsonPath("$.rivers[0].river.endGeoCoordsEastings", is(006.3121657)));
     }
 }

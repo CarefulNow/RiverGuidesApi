@@ -1,4 +1,4 @@
-package com.bazinga.riverguides.api.test;
+package com.bazinga.riverguides.api.test.builders;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,10 +22,16 @@ public class RiversTable {
     private String grade;
     @Column(name = "fun_rating")
     private String funRating;
-    @Column(name = "start_geo_coords")
-    private double startGeoCoords;
-    @Column(name = "end_geo_coords")
-    private double endGeoCoords;
+    @Column(name = "length")
+    private String length;
+    @Column(name = "start_coords_northings")
+    private double startGeoCoordsNorthings;
+    @Column(name = "start_coords_eastings")
+    private double startGeoCoordsEastings;
+    @Column(name = "end_coords_northings")
+    private double endGeoCoordsNorthings;
+    @Column(name = "end_coords_eastings")
+    private double endGeoCoordsEastings;
     @Column(name = "description")
     private String description;
     @Column(name = "author")
@@ -44,8 +50,11 @@ public class RiversTable {
         this.country = builder.country;
         this.grade = builder.grade;
         this.funRating = builder.funRating;
-        this.startGeoCoords = builder.startGeoCoords;
-        this.endGeoCoords = builder.endGeoCoords;
+        this.length = builder.length;
+        this.startGeoCoordsNorthings = builder.startGeoCoordsNorthings;
+        this.startGeoCoordsEastings = builder.startGeoCoordsEastings;
+        this.endGeoCoordsNorthings = builder.endGeoCoordsNorthings;
+        this.endGeoCoordsEastings = builder.endGeoCoordsEastings;
         this.description = builder.description;
         this.author = builder.author;
         this.createdDate = builder.createdDate;
@@ -60,8 +69,11 @@ public class RiversTable {
         private String country;
         private String grade;
         private String funRating;
-        private double startGeoCoords;
-        private double endGeoCoords;
+        private String length;
+        private double startGeoCoordsNorthings;
+        private double startGeoCoordsEastings;
+        private double endGeoCoordsNorthings;
+        private double endGeoCoordsEastings;
         private String description;
         private String author;
         private Date createdDate;
@@ -75,8 +87,11 @@ public class RiversTable {
             this.country = "Ireland";
             this.grade = "4(4+)";
             this.funRating = "10";
-            this.startGeoCoords = 112.256365;
-            this.endGeoCoords = 6.3121657;
+            this.length = "5km";
+            this.startGeoCoordsNorthings = 112.256365;
+            this.startGeoCoordsEastings = 008.256365;
+            this.endGeoCoordsNorthings = 113.3121657;
+            this.endGeoCoordsEastings = 006.3121657;
             this.description = "Cool place";
             this.author = "Star Lord";
             //Back to the Future 2 date 21/10/2015 16:29:00

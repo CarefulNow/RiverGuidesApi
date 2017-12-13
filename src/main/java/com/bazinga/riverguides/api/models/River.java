@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.sun.istack.internal.Nullable;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -35,11 +36,16 @@ public class River {
     private String length;
     @Size(max = 25, min = 1)
     @Pattern(regexp = "[0-9]*")
+    @Nullable
     private String funRating;
     @Digits(integer = 10, fraction = 7)
-    private double startGeoCoords;
+    private double startGeoCoordsNorthings;
     @Digits(integer = 10, fraction = 7)
-    private double endGeoCoords;
+    private double startGeoCoordsEastings;
+    @Digits(integer = 10, fraction = 7)
+    private double endGeoCoordsNorthings;
+    @Digits(integer = 10, fraction = 7)
+    private double endGeoCoordsEastings;
     @NotNull
     @Size(max = 2000, min = 1)
     private String description;
@@ -113,20 +119,36 @@ public class River {
         this.funRating = funRating;
     }
 
-    public double getStartGeoCoords() {
-        return startGeoCoords;
+    public double getStartGeoCoordsNorthings() {
+        return startGeoCoordsNorthings;
     }
 
-    public void setStartGeoCoords(double startGeoCoords) {
-        this.startGeoCoords = startGeoCoords;
+    public void setStartGeoCoordsNorthings(double startGeoCoordsNorthings) {
+        this.startGeoCoordsNorthings = startGeoCoordsNorthings;
     }
 
-    public double getEndGeoCoords() {
-        return endGeoCoords;
+    public double getStartGeoCoordsEastings() {
+        return startGeoCoordsEastings;
     }
 
-    public void setEndGeoCoords(double endGeoCoords) {
-        this.endGeoCoords = endGeoCoords;
+    public void setStartGeoCoordsEastings(double startGeoCoordsEastings) {
+        this.startGeoCoordsEastings = startGeoCoordsEastings;
+    }
+
+    public double getEndGeoCoordsNorthings() {
+        return endGeoCoordsNorthings;
+    }
+
+    public void setEndGeoCoordsNorthings(double endGeoCoordsNorthings) {
+        this.endGeoCoordsNorthings = endGeoCoordsNorthings;
+    }
+
+    public double getEndGeoCoordsEastings() {
+        return endGeoCoordsEastings;
+    }
+
+    public void setEndGeoCoordsEastings(double endGeoCoordsEastings) {
+        this.endGeoCoordsEastings = endGeoCoordsEastings;
     }
 
     public String getDescription() {
@@ -167,5 +189,27 @@ public class River {
 
     public void setLastEditor(String lastEditor) {
         this.lastEditor = lastEditor;
+    }
+
+    @Override
+    public String toString() {
+        return "River{" +
+                "riverName='" + riverName + '\'' +
+                ", sectionName='" + sectionName + '\'' +
+                ", region='" + region + '\'' +
+                ", country='" + country + '\'' +
+                ", grade='" + grade + '\'' +
+                ", length='" + length + '\'' +
+                ", funRating='" + funRating + '\'' +
+                ", startGeoCoordsNorthings=" + startGeoCoordsNorthings +
+                ", startGeoCoordsEastings=" + startGeoCoordsEastings +
+                ", endGeoCoordsNorthings=" + endGeoCoordsNorthings +
+                ", endGeoCoordsEastings=" + endGeoCoordsEastings +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", createdDate='" + createdDate + '\'' +
+                ", lastUpdatedDate='" + lastUpdatedDate + '\'' +
+                ", lastEditor='" + lastEditor + '\'' +
+                '}';
     }
 }

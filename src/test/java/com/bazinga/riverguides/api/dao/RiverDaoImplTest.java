@@ -1,7 +1,7 @@
 package com.bazinga.riverguides.api.dao;
 
 import com.bazinga.riverguides.api.dao.impl.RiverDaoImpl;
-import com.bazinga.riverguides.api.test.RiversTable;
+import com.bazinga.riverguides.api.test.builders.RiversTable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
