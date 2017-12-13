@@ -28,14 +28,44 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>ch.qos.logback</artifactId>
+                    <groupId>logback-classic</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>ch.qos.logback</artifactId>
+                    <groupId>logback-core</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>ch.qos.logback</artifactId>
+                    <groupId>logback-classic</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>ch.qos.logback</artifactId>
+                    <groupId>logback-core</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>ch.qos.logback</artifactId>
+                    <groupId>logback-classic</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>ch.qos.logback</artifactId>
+                    <groupId>logback-core</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -47,6 +77,17 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>${joda.time.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
         <dependency>
