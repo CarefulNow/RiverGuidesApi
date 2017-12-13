@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.sun.istack.internal.Nullable;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -36,7 +35,6 @@ public class River {
     private String length;
     @Size(max = 25, min = 1)
     @Pattern(regexp = "[0-9]*")
-    @Nullable
     private String funRating;
     @Digits(integer = 10, fraction = 7)
     private double startGeoCoordsNorthings;
