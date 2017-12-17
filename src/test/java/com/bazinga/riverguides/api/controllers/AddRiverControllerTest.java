@@ -1,6 +1,8 @@
 package com.bazinga.riverguides.api.controllers;
 
-import com.bazinga.riverguides.api.exception.RequestException;
+import com.bazinga.riverguides.api.exception.ApplicationException;
+import com.bazinga.riverguides.api.exception.errors.RiverGuidesError;
+import com.bazinga.riverguides.api.exception.handlers.ApplicationExceptionHandler;
 import com.bazinga.riverguides.api.exception.handlers.RequestExceptionHandler;
 import com.bazinga.riverguides.api.models.ManagementResponse;
 import com.bazinga.riverguides.api.models.River;
@@ -41,6 +43,7 @@ public class AddRiverControllerTest {
     public void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(addRiversController)
                 .setControllerAdvice(new RequestExceptionHandler())
+                .setControllerAdvice(new ApplicationExceptionHandler())
                 .build();
     }
 
@@ -166,5 +169,34 @@ public class AddRiverControllerTest {
                 .andExpect(jsonPath("$.fieldErrors[0].field", is("author")))
                 .andExpect(jsonPath("$.fieldErrors[0].code", is("NotNull")))
                 .andExpect(jsonPath("$.fieldErrors[0].message", is("may not be null")));
+    }
+
+    @Test
+    public void testAddRiverControllerWithInternalServerError() throws Exception {
+        River testRiver = new River();
+        testRiver.setRiverName("Ottawa");
+        testRiver.setSectionName("Rocher-Fendu");
+        testRiver.setEndGeoCoordsEastings(113.2569874);
+        testRiver.setLength("5Km");
+        testRiver.setAuthor("Morty");
+        testRiver.setFunRating("9");
+        testRiver.setLastEditor("Rick");
+        testRiver.setCountry("Canada");
+        testRiver.setDescription("Wow");
+        testRiver.setGrade("4/4+");
+        testRiver.setRegion("Ottawa");
+        testRiver.setCreatedDate("2017-07-07 19:30:00");
+        testRiver.setLastUpdatedDate("2017-07-07 19:30:00");
+
+        when(addRiverService.addRiver(any(River.class))).thenThrow(new ApplicationException(RiverGuidesError.RIVER_GUIDES_INTERNAL_SERVER_ERROR));
+
+        mockMvc.perform(post("/management/add")
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+                .content(RiverGuidesTestUtils.convertObjectToJsonString(testRiver)))
+                .andDo(print())
+                .andExpect(status().isInternalServerError())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.code", is("1001")))
+                .andExpect(jsonPath("$.message", is("1001: Internal Server Error")));
     }
 }
