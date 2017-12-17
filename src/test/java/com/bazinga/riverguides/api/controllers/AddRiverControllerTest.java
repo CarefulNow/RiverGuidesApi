@@ -5,7 +5,6 @@ import com.bazinga.riverguides.api.models.River;
 import com.bazinga.riverguides.api.service.impl.AddRiverServiceImpl;
 import com.bazinga.riverguides.api.test.RiverGuidesTestUtils;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,9 +13,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.validation.BindingResult;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -24,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AddRiverControllerTest {
     private MockMvc mockMvc;
@@ -34,6 +33,9 @@ public class AddRiverControllerTest {
 
     @Mock
     private AddRiverServiceImpl addRiverService;
+
+    @Mock
+    private BindingResult bindingResult;
 
     @Before
     public void setUp() {
@@ -58,9 +60,10 @@ public class AddRiverControllerTest {
         testRiver.setLastUpdatedDate("2017-07-07 19:30:00");
 
         ManagementResponse response = new ManagementResponse();
-        response.setMessage("River Does Not exist");
+        response.setMessage("River Does Not Exist");
 
-        when(addRiverService.addRiver(eq(testRiver))).thenReturn(response);
+        when(bindingResult.hasErrors()).thenReturn(false);
+        when(addRiverService.addRiver(any(River.class))).thenReturn(response);
 
         mockMvc.perform(post("/management/add").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(RiverGuidesTestUtils.convertObjectToJsonString(testRiver)))
                 .andDo(print())
