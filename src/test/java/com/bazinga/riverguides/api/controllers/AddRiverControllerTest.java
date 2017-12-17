@@ -33,6 +33,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AddRiverControllerTest {
     private MockMvc mockMvc;
 
+    private MockMvc mockMvcWithApplcationExceptionHandler;
+
     @InjectMocks
     private AddRiverController addRiversController;
 
@@ -43,6 +45,8 @@ public class AddRiverControllerTest {
     public void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(addRiversController)
                 .setControllerAdvice(new RequestExceptionHandler())
+                .build();
+        mockMvcWithApplcationExceptionHandler = MockMvcBuilders.standaloneSetup(addRiversController)
                 .setControllerAdvice(new ApplicationExceptionHandler())
                 .build();
     }
@@ -190,7 +194,7 @@ public class AddRiverControllerTest {
 
         when(addRiverService.addRiver(any(River.class))).thenThrow(new ApplicationException(RiverGuidesError.RIVER_GUIDES_INTERNAL_SERVER_ERROR));
 
-        mockMvc.perform(post("/management/add")
+        mockMvcWithApplcationExceptionHandler.perform(post("/management/add")
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
                 .content(RiverGuidesTestUtils.convertObjectToJsonString(testRiver)))
                 .andDo(print())
