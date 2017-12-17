@@ -3,7 +3,9 @@ package com.bazinga.riverguides.api.dao;
 import com.bazinga.riverguides.api.dao.impl.AllRiversDAOImpl;
 import com.bazinga.riverguides.api.models.River;
 import com.bazinga.riverguides.api.test.builders.RiversTable;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -34,6 +36,9 @@ public class AllRiversDaoImplTest {
 
     @Autowired
     private AllRiversDAOImpl allRiversDAO;
+
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
 
     @Test
     @Rollback
