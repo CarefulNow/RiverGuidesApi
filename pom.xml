@@ -16,13 +16,15 @@
         <logback.version>1.2.3</logback.version>
         <h2.database.version>1.4.196</h2.database.version>
         <hamcrest.matchers.version>2.0.0.0</hamcrest.matchers.version>
-        <cucumber.version>1.2.5</cucumber.version>
+        <cucumber.version>2.3.1</cucumber.version>
+        <springfox.version>2.8.0</springfox.version>
+        <hamcrest.version>2.0.0.0</hamcrest.version>
     </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.7.RELEASE</version>
+        <version>1.5.9.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -122,19 +124,30 @@
         </dependency>
 
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-spring</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>

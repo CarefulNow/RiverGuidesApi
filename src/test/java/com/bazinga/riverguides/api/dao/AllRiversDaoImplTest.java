@@ -23,10 +23,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class)
 @AutoConfigureDataJpa
 @SpringBootTest
-@EntityScan(value = "com.bazinga.riverguides.api.test")
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 @AutoConfigureTestEntityManager
 @Transactional
