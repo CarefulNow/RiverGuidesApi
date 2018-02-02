@@ -26,7 +26,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @AutoConfigureDataJpa
-//@EntityScan(value = "com.bazinga.riverguides.api.test")
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 @AutoConfigureTestEntityManager
 @Transactional
@@ -63,7 +62,7 @@ public class RiverRequestStepDefs {
     @Then("^The river name should be \"([^\"]*)\" and section name should be \"([^\"]*)\"$")
     public void the_river_name_should_be_and_section_name_should_be(String riverName, String sectionName) throws Exception {
         resultActions.andDo(print());
-        resultActions.andExpect(jsonPath("$.rivers[0].river.riverName", is(riverName)));
-        resultActions.andExpect(jsonPath("$.rivers[0].river.sectionName", is(sectionName)));
+        resultActions.andExpect(jsonPath("$[0].river.riverName", is(riverName)));
+        resultActions.andExpect(jsonPath("$[0].river.sectionName", is(sectionName)));
     }
 }

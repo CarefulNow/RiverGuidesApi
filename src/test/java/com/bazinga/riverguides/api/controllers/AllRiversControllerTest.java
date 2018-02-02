@@ -1,7 +1,6 @@
 package com.bazinga.riverguides.api.controllers;
 
 import com.bazinga.riverguides.api.models.River;
-import com.bazinga.riverguides.api.models.RiverList;
 import com.bazinga.riverguides.api.service.impl.AllRiversServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,7 +40,6 @@ public class AllRiversControllerTest {
 
     @Test
     public void testGetAllRiversControllerSuccessfulResponse() throws Exception {
-        RiverList riverList = new RiverList();
         River river1 = new River();
         river1.setAuthor("Star Lord");
         river1.setCountry("Sweden");
@@ -59,18 +57,17 @@ public class AllRiversControllerTest {
         river1.setStartGeoCoordsNorthings(112.256365);
         List<River> list = new ArrayList<>();
         list.add(river1);
-        riverList.setRivers(list);
 
-        when(allRiversService.getAllRivers()).thenReturn(riverList);
+        when(allRiversService.getAllRivers()).thenReturn(list);
 
         mockMvc.perform(get("/rivers/getall"))
                 .andDo(print())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.rivers").isArray())
-                .andExpect(jsonPath("$.rivers[0].river.riverName", is("test river")))
-                .andExpect(jsonPath("$.rivers[0].river.funRating", is("0")))
-                .andExpect(jsonPath("$.rivers[0].river.startGeoCoordsNorthings", is(112.256365)))
-                .andExpect(jsonPath("$.rivers[0].river.endGeoCoordsEastings", is(006.3121657)));
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$[0].river.riverName", is("test river")))
+                .andExpect(jsonPath("$[0].river.funRating", is("0")))
+                .andExpect(jsonPath("$[0].river.startGeoCoordsNorthings", is(112.256365)))
+                .andExpect(jsonPath("$[0].river.endGeoCoordsEastings", is(006.3121657)));
     }
 }

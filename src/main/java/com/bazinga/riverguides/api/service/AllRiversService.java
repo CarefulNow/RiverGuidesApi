@@ -1,8 +1,9 @@
 package com.bazinga.riverguides.api.service;
 
-import com.bazinga.riverguides.api.models.RiverList;
-import org.springframework.stereotype.Service;
+import com.bazinga.riverguides.api.models.River;
+
+import java.util.List;
 
 public interface AllRiversService {
-    public RiverList getAllRivers();
+    public List<River> getAllRivers();
 }

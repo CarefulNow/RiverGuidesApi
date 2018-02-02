@@ -2,7 +2,6 @@ package com.bazinga.riverguides.api.service;
 
 import com.bazinga.riverguides.api.dao.impl.AllRiversDAOImpl;
 import com.bazinga.riverguides.api.models.River;
-import com.bazinga.riverguides.api.models.RiverList;
 import com.bazinga.riverguides.api.service.impl.AllRiversServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,9 +34,9 @@ public class AllRiversServiceImplTest {
         riverList.add(river2);
         when(allRiversDAO.getAllRivers()).thenReturn(riverList);
 
-        RiverList result = allRiversService.getAllRivers();
-        assertEquals("The list in Riverlist contains two entries", 2, result.getRivers().size());
-        assertEquals("River 1 is in the list", "river1", result.getRivers().get(0).getRiverName());
-        assertEquals("River 2 is in the list", "river2", result.getRivers().get(1).getRiverName());
+        List<River> result = allRiversService.getAllRivers();
+        assertEquals("The list in Riverlist contains two entries", 2, result.size());
+        assertEquals("River 1 is in the list", "river1", result.get(0).getRiverName());
+        assertEquals("River 2 is in the list", "river2", result.get(1).getRiverName());
     }
 }

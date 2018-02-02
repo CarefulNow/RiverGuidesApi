@@ -2,7 +2,6 @@ package com.bazinga.riverguides.api.service.impl;
 
 import com.bazinga.riverguides.api.dao.impl.AllRiversDAOImpl;
 import com.bazinga.riverguides.api.models.River;
-import com.bazinga.riverguides.api.models.RiverList;
 import com.bazinga.riverguides.api.service.AllRiversService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +14,8 @@ public class AllRiversServiceImpl implements AllRiversService {
     private AllRiversDAOImpl allRiversDAO;
 
     @Override
-    public RiverList getAllRivers() {
-        RiverList riverList = new RiverList();
+    public List<River> getAllRivers() {
         List<River> rivers = allRiversDAO.getAllRivers();
-        riverList.setRivers(rivers);
-        return riverList;
+        return rivers;
     }
 }
